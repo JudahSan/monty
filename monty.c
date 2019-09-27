@@ -1,38 +1,11 @@
 #include "monty.h"
 
-int main(int ac, char *av[])
-{
-	char *strop;
-	int ln = 0, i = 0, fd;
-
-	instruction_t st[] = {
-		{"pall", pall},
-		{"push", push},
-		{"add", add},
-		{"swap", swap},
-		{"pop", pop},
-		{"nop", NULL}
-	}
-
-	if (ac != 2)
-		printf("not right ac");
-	fd = open(av[1], O_RDONLY);
-	if (fd == -1)
-		printf("fail");
-	read(fd, buf, numofstufftoread)
-
-	while (st[i].opcode != "nop")
-	{
-		if (st[i].opcode == strop[])
-		{
-			str[i].f(stack, ln)
-			{
-				i love you <3
-			}
-		}
-		i++;
-	}
-}
+/**
+ * pall - Print all values on the stack
+ * @stack: pointer to head of stack
+ * @line_number: file's line number
+ * Return: Void
+ */
 
 void pall(stack_t **stack, unsigned int line_number)
 {
@@ -45,6 +18,14 @@ void pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * push - Pushes an element to the stack
+ * @stack: pointer to head of stack
+ * @line_number: file's line number
+ * @n: variable
+ * Return: address of new element
+ */
+
 stack_t *push(stack_t **stack, unsigned int line_number, int n)
 {
 	stack_t *new, *h = *stack;
@@ -52,7 +33,7 @@ stack_t *push(stack_t **stack, unsigned int line_number, int n)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 		return;
-	
+
 	new->prev == NULL;
 	new->next == *stack;
 	new->n = n;
@@ -62,9 +43,17 @@ stack_t *push(stack_t **stack, unsigned int line_number, int n)
 	return (*stack);
 }
 
+/**
+ * pop - Removes the top element of the stack
+ * @stack: pointer to head of stack
+ * @line_number: file's line number
+ * Return: Void
+ */
+
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *h;
+
 	if (*h && (*h)->next)
 	{
 		*h = (*h)->next;
@@ -73,10 +62,23 @@ void pop(stack_t **stack, unsigned int line_number)
 	}
 }
 
-void swap(stack_t **stack, unsigned int line_number)
+/**
+ * swap - Swaps the top two elements of the stack
+ * @stack: pointer to head of stack
+ * @line_number: file's line number
+ * Return: Void
+ */
+
+void swap(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h = *stack, *n;
-	
+
+	if (((*head) == NULL) || ((*head)->next == NULL))
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
 	if (h && h->next)
 	{
 		n = *h->next;
@@ -86,18 +88,5 @@ void swap(stack_t **stack, unsigned int line_number)
 		n->prev = NULL;
 		n->next = h;
 		h->prev = n;
-	}
-}
-
-void add(stack_t **stack, unsigned int line_number)
-{
-	stack_t *h = *stack, *n;
-	
-	if (*stack && (*stack)->next)
-	{
-		n = *h->next;
-		n->n += h->n;
-		free(h);
-		*stack = n;
 	}
 }
