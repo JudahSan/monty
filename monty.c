@@ -3,7 +3,7 @@
 /**
  * pall - Print all values on the stack
  * @stack: pointer to head of stack
- * @line_number: file's line number
+ * @line_num: file's line number
  * Return: Void
  */
 
@@ -49,7 +49,7 @@ void push(stack_t **stack, unsigned int line_number, int n)
 /**
  * pop - Removes the top element of the stack
  * @stack: pointer to head of stack
- * @line_number: file's line number
+ * @line_num: file's line number
  * Return: Void
  */
 void pop(stack_t **stack, unsigned int line_num)
@@ -66,10 +66,9 @@ void pop(stack_t **stack, unsigned int line_num)
 /**
  * swap - Swaps the top two elements of the stack
  * @stack: pointer to head of stack
- * @line_number: file's line number
+ * @line_num: file's line number
  * Return: Void
  */
-
 void swap(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h = *stack, *n;

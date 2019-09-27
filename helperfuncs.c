@@ -22,7 +22,11 @@ int _strcmp(char *opcode, char *list)
 	}
 	return (0);
 }
-
+/**
+ * pushint - int for push opcde
+ * @list: the content of the file
+ * Return: the number
+ */
 int pushint(char *list)
 {
 	char *opcode = "push";

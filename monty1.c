@@ -26,7 +26,12 @@ void add(stack_t **stack, unsigned int line_num)
 	}
 }
 
-
+/**
+ * pint - print the list
+ * @stack: the stack
+ * @line_num: the line number
+ * Return: void
+ */
 void pint(stack_t **stack, unsigned int line_num)
 {
 	if (!stack)

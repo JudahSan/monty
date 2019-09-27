@@ -1,5 +1,10 @@
 #include "monty.h"
-
+/**
+ * main - monty interperter
+ * @ac: the number of arguments
+ * @av: the arguments
+ * return: 0
+ */
 int main(int ac, char *av[])
 {
 	char *buf = NULL, *string[100] = {NULL};
@@ -39,8 +44,9 @@ int main(int ac, char *av[])
 /**
  * execute - executes opcodes
  * @string: contents of file
+ * @stack: the list
  * Return: void
- */ 
+ */
 void execute(char *string[], stack_t *stack)
 {
 	int ln, i;
