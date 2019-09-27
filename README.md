@@ -3,7 +3,7 @@
   
   
 ## SYNOPSIS  
-monty is a simple byte code interpreter in accordance with Holberton School standards and expectations. This project's purpose was to introduce students to working with the stack which is [**LIFO** (last in first out)]([https://en.wikipedia.org/wiki/Stack_(abstract_data_type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))) and the `queue`, which is [**FIFO** (first in first out)]([https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics))).  
+monty is a simple byte code interpreter in accordance with Holberton School standards and expectations. This project's purpose was to introduce students to working with the `stack` which is [**LIFO** (last in first out)]([https://en.wikipedia.org/wiki/Stack_(abstract_data_type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))) and the `queue`, which is [**FIFO** (first in first out)]([https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics))).  
   
   
   
@@ -81,10 +81,9 @@ File | Description
 --------|---------------  
 helperfuncs.c | Includes functions for string manipulation.  
 main.c| Contains parser and main monty interpreter.  
-path_funcs1.c | Contains path functions.  
-path_funcs2.c | Contains path functions.  
-prompt.c | Displays ps1 prompt.  
-rec_cmd_exec_cmd.c | Receives and executes commands.  
+free_list.c | Contains function to print doubly linked list    
+monty.c | Contains functions for opcodes 
+monty1.c | Contains functions for opcodes 
 monty.h | Contains function prototypes and data structures.  
   
   
@@ -99,26 +98,33 @@ monty.h | Contains function prototypes and data structures.
   
 *Christian Williams* :musical_note:  
   
-## FUNCTIONS  
+## Data Structures and Functions  Used
   
-```
-extern char **environ;
-void environ1(char **env);
-void shell_init(char **env);
-int main(int argc, char **argv, char **env);
-char *catcmddir(char *dir, char *arg_val);
-char *environ_vars(char **env);
-char **tokenize_Dir(char **env);
-char *path_scan(char **dir, char *cmd);
-void prompt(void);
-char *get_line(void);
-char **line_token(char *line);
-int exec_cmd(char *cmdpath, char **command);
-int exit_hsh(char **cmd);
-int print_env(char **cmd);
-int call_built(char *cmbn, char **cmd);
-int _strlen(char *s);
+```  
+typedef struct stack_s
+
+{
+int n;
+struct stack_s *prev;
+struct stack_s *next;
+} stack_t;
+
+typedef struct instruction_s
+
+{
+char *opcode;
+void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+
+void add(stack_t **stack, unsigned int line_num);
+void swap(stack_t **stack, unsigned int line_num);
+void pop(stack_t **stack, unsigned int line_num);
+stack_t *push(stack_t **stack, unsigned int line_num, int n);
+void pall(stack_t **stack, unsigned int line_num);
+stack_t *push(stack_t **stack, unsigned int line_num, int n);
+void swap(stack_t **stack, unsigned int line_num);
+void free_dlistint(dlistint_t *head);
 int _strcmp(char *s1, char *s2);
-char *_strdup(char *str);
+
 
 ```
