@@ -7,7 +7,7 @@
  * Return: Void
  */
 
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h = *stack;
 
@@ -52,7 +52,7 @@ void push(stack_t **stack, unsigned int line_number, int n)
  * @line_number: file's line number
  * Return: Void
  */
-void pop(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h = *stack;
 
@@ -73,7 +73,7 @@ void pop(stack_t **stack, unsigned int line_number)
 void swap(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h = *stack, *n;
-	
+
 	if (h && h->next)
 	{
 		n = h->next;

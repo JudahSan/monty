@@ -8,8 +8,6 @@
  */
 int _strcmp(char *opcode, char *list)
 {
-
-	
 	while (*list != '\0')
 	{
 		if (*opcode == *list)
@@ -39,10 +37,7 @@ int pushint(char *list)
 				while (*list)
 				{
 					if (*list > '0' && *list < '9')
-					{
-						//printf("%d/n", atoi(list));
 						return (atoi(list));
-					}
 					list++;
 				}
 		}

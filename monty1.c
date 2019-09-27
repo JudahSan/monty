@@ -27,7 +27,7 @@ void add(stack_t **stack, unsigned int line_num)
 }
 
 
-void pint(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_num)
 {
 	if (!stack)
 		printf("error");
