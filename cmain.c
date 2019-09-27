@@ -1,11 +1,12 @@
 #include "monty.h"
-stack_t *stack = NULL;
+
 
 int main(int ac, char *av[])
 {
 	char *buf = NULL, *string[100];
 	int ln = 0, i = 0, fd, y;
 	stack_t *ptr;
+	stack_t *stack = NULL;
 
 	instruction_t st[] = {
 		{"pall", pall},
@@ -65,14 +66,8 @@ int main(int ac, char *av[])
 	}
 
 	i = 0;
-	ptr = *stack;
-	while (*stack->next)
-	{
-		ptr = (*stack)->next;
-		free(*stack);
-		*stack = (*stack)->next;
-	}
-	free(stack);
+
+	free(buf);
 	close(fd);
 	return (0);
 }

@@ -1,10 +1,10 @@
 #include "monty.h"
+
 /**
  * _strcmp - compares strings
- * @s1: a string to be compared
- * @s2: a string to be compared
+ * @opcode: a string to be compared
+ * @list: a string to be compared
  * Return: 0
- *
  */
 int _strcmp(char *opcode, char *list)
 {
