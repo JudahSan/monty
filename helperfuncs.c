@@ -6,17 +6,48 @@
  * Return: 0
  *
  */
-int _strcmp(char *s1, char *s2)
+int _strcmp(char *opcode, char *list)
 {
-	while (*s1 != '\0')
+
+	
+	while (*list != '\0')
 	{
-		if (*s1 == *s2)
+		if (*opcode == *list)
 		{
-			s1++;
-			s2++;
+			opcode++;
+			list++;
+			if (*opcode == '\0')
+				return (1);
 		}
 		else
-			break;
+			list++;
+	}
+	return (0);
+}
+
+int pushint(char *list)
+{
+	char *opcode = "push";
+
+	while (*list != '\0')
+	{
+		if (*opcode == *list)
+		{
+			opcode++;
+			list++;
+			if (*opcode == '\0')
+				while (*list)
+				{
+					if (*list > '0' && *list < '9')
+					{
+						//printf("%d/n", atoi(list));
+						return (atoi(list));
+					}
+					list++;
+				}
+		}
+		else
+			list++;
 	}
 	return (0);
 }
