@@ -3,13 +3,19 @@
 /**
  * pall - Print all values on the stack
  * @stack: pointer to head of stack
- * @line_number: file's line number
+ * @line_num: file's line number
  * Return: Void
  */
 
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_num)
 {
 	*h = *stack;
+
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%d: Unable to Pall - Empty Stack\n", line_num);
+		exit(EXIT_FAILURE);
+	}
 
 	while (h->next)
 	{
@@ -46,13 +52,19 @@ stack_t *push(stack_t **stack, unsigned int line_number, int n)
 /**
  * pop - Removes the top element of the stack
  * @stack: pointer to head of stack
- * @line_number: file's line number
+ * @line_num: file's line number
  * Return: Void
  */
 
-void pop(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h;
+
+	if (!(*stack))
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_num);
+		exit(EXIT_FAILURE);
+	}
 
 	if (*h && (*h)->next)
 	{
@@ -65,7 +77,7 @@ void pop(stack_t **stack, unsigned int line_number)
 /**
  * swap - Swaps the top two elements of the stack
  * @stack: pointer to head of stack
- * @line_number: file's line number
+ * @line_num: file's line number
  * Return: Void
  */
 
