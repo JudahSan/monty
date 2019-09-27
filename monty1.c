@@ -3,13 +3,19 @@
 /**
  * add - Adds the top two elements of the stack.
  * @stack: pointer to head of stack
- * @line_number: file's line number
+ * @line_num: file's line number
  * Return: Void
  */
 
-void add(stack_t **stack, unsigned int line_number)
+void add(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h = *stack, *n;
+
+	if ((*stack) == NULL || (*head)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", line_num);
+		exit(EXIT_FAILURE);
+	}
 
 	if (*stack && (*stack)->next)
 	{
