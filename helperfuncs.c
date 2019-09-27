@@ -6,10 +6,10 @@
  * @list: a string to be compared
  * Return: 0
  */
+
 int _strcmp(char *opcode, char *list)
 {
 
-	
 	while (*list != '\0')
 	{
 		if (*opcode == *list)
@@ -24,6 +24,12 @@ int _strcmp(char *opcode, char *list)
 	}
 	return (0);
 }
+
+/**
+ * pushint - Creates integer for the push function
+ * @list: a string to be compared
+ * Return: 0
+ */
 
 int pushint(char *list)
 {
@@ -40,7 +46,6 @@ int pushint(char *list)
 				{
 					if (*list > '0' && *list < '9')
 					{
-						//printf("%d/n", atoi(list));
 						return (atoi(list));
 					}
 					list++;
