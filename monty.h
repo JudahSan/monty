@@ -40,6 +40,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void pint(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *head);
 int pushint(char *list);
 int _strcmp(char *opcode, char *list);
 void add(stack_t **stack, unsigned int line_number);

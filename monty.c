@@ -3,21 +3,15 @@
 /**
  * pall - Print all values on the stack
  * @stack: pointer to head of stack
- * @line_num: file's line number
+ * @line_number: file's line number
  * Return: Void
  */
 
-void pall(stack_t **stack, unsigned int line_num)
+void pall(stack_t **stack, unsigned int line_number)
 {
-	*h = *stack;
+	stack_t *h = *stack;
 
-	if (stack == NULL)
-	{
-		fprintf(stderr, "L%d: Unable to Pall - Empty Stack\n", line_num);
-		exit(EXIT_FAILURE);
-	}
-
-	while (h->next)
+	while (h)
 	{
 		printf("%d\n", h->n);
 		h = h->next;
@@ -32,68 +26,57 @@ void pall(stack_t **stack, unsigned int line_num)
  * Return: address of new element
  */
 
-stack_t *push(stack_t **stack, unsigned int line_number, int n)
+void push(stack_t **stack, unsigned int line_number, int n)
 {
 	stack_t *new, *h = *stack;
 
+	if (stack == NULL)
+	{
+		printf("stack is NULL, *stack == NULL, were inside");
+		exit(EXIT_FAILURE);
+	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
-		return;
-
-	new->prev == NULL;
-	new->next == *stack;
+		exit;
+	new->prev = NULL;
 	new->n = n;
-	if (h->prev)
+	new->next = *stack;
+	if (*stack)
 		h->prev = new;
 	*stack = new;
-	return (*stack);
 }
 
 /**
  * pop - Removes the top element of the stack
  * @stack: pointer to head of stack
- * @line_num: file's line number
+ * @line_number: file's line number
  * Return: Void
  */
-
-void pop(stack_t **stack, unsigned int line_num)
+void pop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *h;
+	stack_t *h = *stack;
 
-	if (!(*stack))
+	if (h)
 	{
-		fprintf(stderr, "L%u: can't pop an empty stack\n", line_num);
-		exit(EXIT_FAILURE);
-	}
-
-	if (*h && (*h)->next)
-	{
-		*h = (*h)->next;
-		free(*h);
-		*stack = *h;
+		*stack = (h)->next;
+		free(h);
 	}
 }
 
 /**
  * swap - Swaps the top two elements of the stack
  * @stack: pointer to head of stack
- * @line_num: file's line number
+ * @line_number: file's line number
  * Return: Void
  */
 
 void swap(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h = *stack, *n;
-
-	if (((*head) == NULL) || ((*head)->next == NULL))
-	{
-		fprintf(stderr, "L%u: can't swap, stack too short\n", line_num);
-		exit(EXIT_FAILURE);
-	}
-
+	
 	if (h && h->next)
 	{
-		n = *h->next;
+		n = h->next;
 		if (n->next->prev)
 			n->next->prev = h;
 		h->next = n->next;

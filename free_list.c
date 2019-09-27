@@ -1,4 +1,4 @@
-#include "lists.h"
+#include "monty.h"
 
 /**
  * free_dlistint - frees the singly linked list
@@ -6,9 +6,9 @@
  * Return: Nothing
  */
 
-void free_dlistint(dlistint_t *head)
+void free_stack(stack_t *head)
 {
-	dlistint_t *node = head;
+	stack_t *node = head;
 
 	if (head == NULL)
 		return;
