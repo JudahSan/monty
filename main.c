@@ -3,41 +3,35 @@
  * main - monty interperter
  * @ac: the number of arguments
  * @av: the arguments
- * return: 0
+ * Return: void
  */
 int main(int ac, char *av[])
 {
-	char *buf = NULL, *string[100] = {NULL};
-	int ln = 0, fd, y, x;
+	static char *string[100];
+	int n = 0;
+	FILE *fd;
+	size_t bufsize = 1000;
 	stack_t *stack = NULL;
 
 	if (ac != 2)
-		printf("not right ac");
-	fd = open(av[1], O_RDONLY);
-	if (fd == -1)
 	{
-		fprintf(stderr, "%s won't open", av[1]);
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	buf = malloc(1000);
-	if (buf == NULL)
+	fd = fopen(av[1], "r");
+	if (fd == NULL)
 	{
-		fprintf(stderr, "Malloc Failure");
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	for (x = 0; x < 1000; x++)
-		buf[x] = '\0';
-	y = read(fd, buf, 1000);
-	if (y == -1)
-		exit(EXIT_FAILURE);
-	string[ln] = strtok(buf, "\n");
-	while (string[ln++])
-		string[ln] = strtok(NULL, "\n");
+
+
+	for (n = 0; getline(&(string[n]), &bufsize, fd) > -1; n++)
+		;
 
 	execute(string, stack);
 	free_stack(stack);
-	free(buf);
-	close(fd);
+	fclose(fd);
 	return (0);
 }
 
@@ -49,7 +43,7 @@ int main(int ac, char *av[])
  */
 void execute(char *string[], stack_t *stack)
 {
-	int ln, i;
+	int ln, n, i;
 
 	instruction_t st[] = {
 		{"pall", pall},
@@ -57,21 +51,30 @@ void execute(char *string[], stack_t *stack)
 		{"add", add},
 		{"swap", swap},
 		{"pop", pop},
-		{"nop", NULL}
+		{"null", NULL}
 	};
 
-	for (ln = 0; string[ln]; ln++)
+	for (ln = 1, n = 0; string[n + 1]; n++, ln++)
 	{
-		if (_strcmp("push", string[ln]))
-			push(&stack, ln, pushint(string[ln]));
+		if (_strcmp("push", string[n]))
+			push(&stack, ln, pushint(string[n]));
 		else
 		{
 			i = 0;
-			while (!_strcmp(st[i].opcode, "nop"))
+			while (!_strcmp(st[i].opcode, "null"))
 			{
-				if (_strcmp(st[i].opcode, string[ln]))
+				if (_strcmp(st[i].opcode, string[n]))
+				{
 					st[i].f(&stack, ln);
+					break;
+				}
 				i++;
+			}
+			if (_strcmp(st[i].opcode, "null") && !_strcmp(string[n], "\n"))
+			{
+				fprintf(stderr, "L%d: unknown instruction %s", ln, string[n]);
+				if (!nlfind(string[n]))
+					fprintf(stderr, "\n");
 			}
 		}
 	}

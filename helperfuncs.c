@@ -18,6 +18,35 @@ int _strcmp(char *opcode, char *list)
 				return (1);
 		}
 		else
+		{
+			if (*list == ' ')
+				list++;
+			return (0);
+		}
+	}
+	return (0);
+}
+
+/**
+ * nlfind - finds newline
+ * @nl - '\n'
+ * @list: the string to find \n
+ * Return: 1 || 0
+ */
+int nlfind(char *list)
+{
+	char *opcode = "\n";
+
+	while (*list != '\0')
+	{
+		if (*opcode == *list)
+		{
+			opcode++;
+			list++;
+			if (*opcode == '\0')
+				return (1);
+		}
+		else
 			list++;
 	}
 	return (0);
@@ -40,7 +69,7 @@ int pushint(char *list)
 			if (*opcode == '\0')
 				while (*list)
 				{
-					if (*list > '0' && *list < '9')
+					if (*list > '0' && *list <= '9')
 						return (atoi(list));
 					list++;
 				}

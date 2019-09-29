@@ -10,12 +10,7 @@
 void pall(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h = *stack;
-
-	if (stack == NULL)
-	{
-		fprintf(stderr, "L%d: Unable to Pall - Empty Stack\n", line_num);
-		exit(EXIT_FAILURE);
-	}
+	(void)line_num;
 
 	while (h)
 	{

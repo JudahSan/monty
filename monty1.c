@@ -6,7 +6,6 @@
  * @line_num: file's line number
  * Return: Void
  */
-
 void add(stack_t **stack, unsigned int line_num)
 {
 	stack_t *h = *stack, *n;
