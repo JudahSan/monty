@@ -1,10 +1,5 @@
-lop
-push         7000
+push 1
+push     2
 
-
-cpalloooo
-
-push 100
-push 99
+push 
 pall
-ppk

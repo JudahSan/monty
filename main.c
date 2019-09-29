@@ -57,7 +57,7 @@ void execute(char *string[], stack_t *stack)
 	for (ln = 1, n = 0; string[n + 1]; n++, ln++)
 	{
 		if (_strcmp("push", string[n]))
-			push(&stack, ln, pushint(string[n]));
+			push(&stack, ln, pushint(string[n], ln));
 		else
 		{
 			i = 0;

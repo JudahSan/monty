@@ -56,7 +56,7 @@ int nlfind(char *list)
  * @list: the content of the file
  * Return: the number
  */
-int pushint(char *list)
+int pushint(char *list, int ln)
 {
 	char *opcode = "push";
 
@@ -77,5 +77,7 @@ int pushint(char *list)
 		else
 			list++;
 	}
+	fprintf(stderr, "L%d: usage: push integer\n", ln);
+	exit(EXIT_FAILURE);
 	return (0);
 }
