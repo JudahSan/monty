@@ -58,6 +58,8 @@ void execute(char *string[], stack_t *stack)
 	{
 		if (_strcmp("push", string[n]))
 			push(&stack, ln, pushint(string[n], ln));
+		else if (_strcmp("nop", string[n]))
+			;
 		else
 		{
 			i = 0;
