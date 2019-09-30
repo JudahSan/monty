@@ -51,6 +51,6 @@ void push(stack_t **stack, unsigned int line_number, int n);
 void pall(stack_t **stack, unsigned int line_num);
 void execute(char *string[], stack_t *stack);
 int nlfind(char *list);
-
+void free_list(char *a[]);
 
 #endif

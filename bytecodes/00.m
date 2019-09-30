@@ -1,5 +1,15 @@
-push 1
-push     2
-
-push 
+jiejf
+wjefiwje
+sldkfjwf
+owajfwif
+woefijf
 pall
+  push 1
+   push 2
+   push 3
+ push 4
+     pall
+
+
+
+pppppal

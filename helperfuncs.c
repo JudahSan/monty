@@ -10,7 +10,9 @@ int _strcmp(char *opcode, char *list)
 {
 	while (*list != '\0')
 	{
-		if (*opcode == *list)
+		if (*list == ' ')
+			list++;
+		else if (*opcode == *list)
 		{
 			opcode++;
 			list++;
@@ -18,11 +20,7 @@ int _strcmp(char *opcode, char *list)
 				return (1);
 		}
 		else
-		{
-			if (*list == ' ')
-				list++;
 			return (0);
-		}
 	}
 	return (0);
 }
@@ -51,8 +49,9 @@ int nlfind(char *list)
 	}
 	return (0);
 }
+
 /**
- * pushint - int for push opcde
+ * pushint - int for push opcode
  * @list: the content of the file
  * Return: the number
  */

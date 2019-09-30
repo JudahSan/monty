@@ -1,4 +1,6 @@
 #include "monty.h"
+stack_t *stack = NULL;
+
 /**
  * main - monty interperter
  * @ac: the number of arguments
@@ -7,11 +9,12 @@
  */
 int main(int ac, char *av[])
 {
-	static char *string[100];
+	static char *string[1000] = {NULL};
 	int n = 0;
 	FILE *fd;
 	size_t bufsize = 1000;
-	stack_t *stack = NULL;
+	stack_t *h = stack;
+
 
 	if (ac != 2)
 	{
@@ -26,11 +29,13 @@ int main(int ac, char *av[])
 	}
 
 
-	for (n = 0; getline(&(string[n]), &bufsize, fd) > -1; n++)
+	for (n = 0; getline(&(string[n]), &bufsize, fd) > 0; n++)
 		;
 
+	
+
 	execute(string, stack);
-	free_stack(stack);
+	free_list(string);
 	fclose(fd);
 	return (0);
 }
@@ -78,4 +83,5 @@ void execute(char *string[], stack_t *stack)
 			}
 		}
 	}
+	free_stack(stack);
 }
