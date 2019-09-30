@@ -16,7 +16,7 @@ int _strcmp(char *opcode, char *list)
 		{
 			opcode++;
 			list++;
-			if (*opcode == '\0')
+			if (*opcode == '\0' && (*list == ' ' || *list == '\n' || *list == '\0'))
 				return (1);
 		}
 		else
@@ -70,13 +70,18 @@ int pushint(char *list, int ln)
 				{
 					if (*list > '0' && *list <= '9')
 						return (atoi(list));
-					list++;
+					else if (*list == ' ')
+						list++;
+					else
+					{
+						fprintf(stderr, "L%d: usage: push integer\n", ln);
+						exit(EXIT_FAILURE);
+					}
 				}
 		}
 		else
 			list++;
 	}
-	fprintf(stderr, "L%d: usage: push integer\n", ln);
-	exit(EXIT_FAILURE);
+	
 	return (0);
 }
