@@ -1,4 +1,4 @@
-push 12 3
+push 12a3
 push 1024
 push -0
 push -1

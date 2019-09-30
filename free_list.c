@@ -5,7 +5,6 @@
  * @head: pointer to list
  * Return: Nothing
  */
-
 void free_stack(stack_t *head)
 {
 	stack_t *node = head;
@@ -21,6 +20,11 @@ void free_stack(stack_t *head)
 	}
 }
 
+/**
+ * free_list - frees getline list
+ * @a: pointer to array of strings
+ * Return: Nothing
+ */
 void free_list(char *a[])
 {
 	int i = 0;

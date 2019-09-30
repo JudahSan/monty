@@ -1,5 +1,4 @@
 #include "monty.h"
-stack_t *stack = NULL;
 
 /**
  * main - monty interperter
@@ -9,6 +8,7 @@ stack_t *stack = NULL;
  */
 int main(int ac, char *av[])
 {
+	stack_t *stack = NULL;
 	static char *string[1000] = {NULL};
 	int n = 0;
 	FILE *fd;

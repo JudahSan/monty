@@ -52,5 +52,7 @@ void pall(stack_t **stack, unsigned int line_num);
 void execute(char *string[], stack_t *stack);
 int nlfind(char *list);
 void free_list(char *a[]);
+int combfind(char *list, int ln);
+
 
 #endif

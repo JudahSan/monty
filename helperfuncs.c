@@ -27,7 +27,6 @@ int _strcmp(char *opcode, char *list)
 
 /**
  * nlfind - finds newline
- * @nl - '\n'
  * @list: the string to find \n
  * Return: 1 || 0
  */
@@ -53,13 +52,13 @@ int nlfind(char *list)
 /**
  * pushint - int for push opcode
  * @list: the content of the file
+ * @ln: line number
  * Return: the number
  */
 int pushint(char *list, int ln)
 {
 	char *opcode = "push";
-	int i = 0;
-	
+
 	while (*list != '\0')
 	{
 		if (*opcode == *list)
@@ -67,24 +66,11 @@ int pushint(char *list, int ln)
 			opcode++;
 			list++;
 			if (*opcode == '\0')
-			{
 				while (*list)
 				{
 					if ((*list >= '0' && *list <= '9') || *list == '-')
 					{
-						i = 1;
-						while (list[i])
-						{
-							if ((list[i] >= '0' && list[i] <= '9') || list[i] == ' ')
-								i++;
-							else if (list[i] == '\0' || list[i] == '\n')
-								break;
-							else
-							{
-								fprintf(stderr, "L%d: usage: push integer\n", ln);
-								exit(EXIT_FAILURE);
-							}
-						}
+						combfind(list, ln);
 						return (atoi(list));
 					}
 					else if (*list == ' ')
@@ -95,10 +81,31 @@ int pushint(char *list, int ln)
 						exit(EXIT_FAILURE);
 					}
 				}
-			}
 		}
 		else
 			list++;
 	}
 	return (0);
+}
+
+/**
+ * combfind - finds nonnumbers and number combinations
+ * @list: the string
+ * @ln: line number
+ * Return: 1
+ */
+int combfind(char *list, int ln)
+{
+	int i = 1;
+
+	while (list[i])
+	{
+		if ((list[i] >= '0' && list[i] <= '9') || list[i] == ' ')
+			i++;
+		else if (list[i] == '\0' || list[i] == '\n')
+			break;
+		fprintf(stderr, "L%d: usage: push integer\n", ln);
+		exit(EXIT_FAILURE);
+	}
+	return (1);
 }
