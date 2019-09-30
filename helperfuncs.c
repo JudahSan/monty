@@ -100,6 +100,8 @@ int combfind(char *list, int ln)
 
 	while (list[i])
 	{
+		if (list[i] == '\0' || list[i] == '\n')
+			break;
 		if ((list[i] >= '0' && list[i] <= '9') || list[i] == ' ')
 			i++;
 		else
@@ -107,8 +109,6 @@ int combfind(char *list, int ln)
 			fprintf(stderr, "L%d: usage: push integer\n", ln);
 			exit(EXIT_FAILURE);
 		}
-		if (list[i] == '\0' || list[i] == '\n')
-			break;
 	}
 	return (1);
 }
