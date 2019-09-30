@@ -58,7 +58,8 @@ int nlfind(char *list)
 int pushint(char *list, int ln)
 {
 	char *opcode = "push";
-
+	int i = 0;
+	
 	while (*list != '\0')
 	{
 		if (*opcode == *list)
@@ -66,10 +67,26 @@ int pushint(char *list, int ln)
 			opcode++;
 			list++;
 			if (*opcode == '\0')
+			{
 				while (*list)
 				{
-					if (*list > '0' && *list <= '9')
+					if ((*list >= '0' && *list <= '9') || *list == '-')
+					{
+						i = 1;
+						while (list[i])
+						{
+							if ((list[i] >= '0' && list[i] <= '9') || list[i] == ' ')
+								i++;
+							else if (list[i] == '\0' || list[i] == '\n')
+								break;
+							else
+							{
+								fprintf(stderr, "L%d: usage: push integer\n", ln);
+								exit(EXIT_FAILURE);
+							}
+						}
 						return (atoi(list));
+					}
 					else if (*list == ' ')
 						list++;
 					else
@@ -78,10 +95,10 @@ int pushint(char *list, int ln)
 						exit(EXIT_FAILURE);
 					}
 				}
+			}
 		}
 		else
 			list++;
 	}
-	
 	return (0);
 }
