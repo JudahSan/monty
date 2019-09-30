@@ -102,10 +102,13 @@ int combfind(char *list, int ln)
 	{
 		if ((list[i] >= '0' && list[i] <= '9') || list[i] == ' ')
 			i++;
-		else if (list[i] == '\0' || list[i] == '\n')
+		else
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", ln);
+			exit(EXIT_FAILURE);
+		}
+		if (list[i] == '\0' || list[i] == '\n')
 			break;
-		fprintf(stderr, "L%d: usage: push integer\n", ln);
-		exit(EXIT_FAILURE);
 	}
 	return (1);
 }
