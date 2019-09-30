@@ -13,8 +13,6 @@ int main(int ac, char *av[])
 	int n = 0;
 	FILE *fd;
 	size_t bufsize = 1000;
-	stack_t *h = stack;
-
 
 	if (ac != 2)
 	{
@@ -31,9 +29,6 @@ int main(int ac, char *av[])
 
 	for (n = 0; getline(&(string[n]), &bufsize, fd) > 0; n++)
 		;
-
-	
-
 	execute(string, stack);
 	free_list(string);
 	fclose(fd);
