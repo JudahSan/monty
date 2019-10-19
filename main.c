@@ -41,7 +41,7 @@ int main(int ac, char *av[])
  * @stack: the list
  * Return: void
  */
- ```
+
 void execute(char *string[], stack_t *stack)
 {
 	int ln, n, i;
@@ -84,4 +84,4 @@ void execute(char *string[], stack_t *stack)
 	}
 	free_stack(stack);
 }
-```
+
