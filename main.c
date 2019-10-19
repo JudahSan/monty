@@ -34,13 +34,14 @@ int main(int ac, char *av[])
 	fclose(fd);
 	return (0);
 }
-```
+
 /**
  * execute - executes opcodes
  * @string: contents of file
  * @stack: the list
  * Return: void
  */
+ ```
 void execute(char *string[], stack_t *stack)
 {
 	int ln, n, i;
