@@ -34,7 +34,7 @@ int main(int ac, char *av[])
 	fclose(fd);
 	return (0);
 }
-
+```
 /**
  * execute - executes opcodes
  * @string: contents of file
@@ -83,3 +83,4 @@ void execute(char *string[], stack_t *stack)
 	}
 	free_stack(stack);
 }
+```
