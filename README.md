@@ -1,7 +1,8 @@
 # monty - Stacks, Queues - LIFO, FIFO 🥞  
 #### monty functions as a Monty byte code interpreter. Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it.  
-  
-  
+# Resources
+### [Stacks and Queues](https://data-flair.training/blogs/stacks-and-queues-in-c/)
+### [Sharing variables between sources](https://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files)<br>  
 ## SYNOPSIS  
 monty is a simple byte code interpreter in accordance with Holberton School standards and expectations. This project's purpose was to introduce students to working with the `stack` which is [**LIFO** (last in first out)]([https://en.wikipedia.org/wiki/Stack_(abstract_data_type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))) and the `queue`, which is [**FIFO** (first in first out)]([https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics))).  
   
