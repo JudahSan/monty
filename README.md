@@ -1,80 +1,134 @@
-# 0x19 C - Stacks, Queues - LIFO, FIFO :pencil2:
-
-> C is a powerful general-purpose programming language. It can be used to develop software like operating systems, databases, compilers, and so on. This projects covers concepts of Stacks, Queues, LIFO, FIFO implementation.
-This was a duo project with the awesome partner [Karen Herrera](https://github.com/karenaHV/)
-
-At the end of this project, We were able to solve these questions:
+# monty - Stacks, Queues - LIFO, FIFO 🥞  
+#### monty functions as a Monty byte code interpreter. Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it.  
   
-* What do LIFO and FIFO mean
-* What is a stack, and when to use it
-* What is a queue, and when to use it
-* What are the common implementations of stacks and queues
-* What are the most common use cases of stacks and queues
-* What is the proper way to use global variables
 
-## Tasks :heavy_check_mark:
+##
+ ### [How do I use extern to share variables between source files?](https://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files)
+ ### [Stacks and Queues in C](https://data-flair.training/blogs/stacks-and-queues-in-c/)
 
-0. Implement the push and pall opcodes
-1. Implement the pint opcode.
-2. Implement the pop opcode.
-3. Implement the swap opcode.
-4. Implement the add opcode.
-5. Implement the nop opcode.
-6. Implement the sub opcode.
-7. Implement the div opcode.
-8. Implement the mul opcode.
-9. Implement the mod opcode.
-10. When the first non-space character of a line is #, treat this line as a comment (don’t do anything).
-11. Implement the pchar opcode.
-12. Implement the pstr opcode.
-13. Implement the rotl opcode.
-14. Implement the rotr opcode.
-15. Implement the stack and queue opcodes.
-16. Write a Brainf*ck script that prints Holberton (at bf/dir)
-17. Read the two digits from stdin, add them, and print the result (at bf/dir)
-18. Read the two digits from stdin, multiply them, and print the result (at bf/dir)
-19. Multiply two digits given by the user. (at bf/dir)
+## SYNOPSIS  
+ [**LIFO** (last in first out)]([https://en.wikipedia.org/wiki/Stack_(abstract_data_type)](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))) `queue`,  [**FIFO** (first in first out)]([https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics))).  
+  
+  
+  
+  
+  
+  
+## INSTALLATION AND USAGE  
+Please use GCC 4.8.4 compiler or later.  
+  
+```  
+$ git clone [repository link]  
+$ gcc -Wall -Werror -Wextra -pedantic *.c -o monty  
+$ ./monty file_name.m  
+```  
+  
+  
+  
+## SYNTAX OVERVIEW AND EXAMPLES  
+  
+  
+Below are some examples of using monty with bytecode files:  
+  
+```  
+vagrant@vagrant-ubuntu-trusty-64:~/0x19-stacks_queues_lifo_fifo$ cat -e bytecodes/00.m  
+push 1$  
+push 2$  
+push 3$  
+pall$  
+vagrant@vagrant-ubuntu-trusty-64:~/0x19-stacks_queues_lifo_fifo$ ./monty bytecodes/00.m  
+3  
+2  
+1  
+vagrant@vagrant-ubuntu-trusty-64:~/0x19-stacks_queues_lifo_fifo$  
+```  
+```  
+vagrant@vagrant-ubuntu-trusty-64:~/0x19-stacks_queues_lifo_fifo$ cat bytecodes/09.m  
+push 1  
+push 2  
+push 3  
+pall  
+swap  
+pall  
+vagrant@vagrant-ubuntu-trusty-64:~/0x19-stacks_queues_lifo_fifo$ ./monty bytecodes/09.m  
+3  
+2  
+1  
+2  
+3  
+1  
+vagrant@vagrant-ubuntu-trusty-64:~/0x19-stacks_queues_lifo_fifo$  
+```  
+## opcodes 
 
-## Results :chart_with_upwards_trend:
+Listed below are the opcodes to can be used in monty:  
+  
+opcode | Function  
+--------|---------------  
+push | Pushes an element to the stack  
+pall | Prints all the values on the stack, starting from the top of the stack  
+pint| prints the value at the top of the stack, followed by a new line  
+pop| Removes the top element of the stack  
+swap | Swaps the top two elements of the stack  
+ add | Adds the top two elements of the stack  
+ nop| Doesn’t do anything 
+  
+  
+  
+  
 
-| Filename |
-| ------ |
-| [bf](https://github.com/edward0rtiz/monty/tree/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/bf)|
-| [builtins1.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/builtins1.c)|
-| [builtins2.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/builtins2.c)|
-| [builtins3.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/builtins3.c)|
-| [error_1.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/error_1.c)|
-| [error_2.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/error_2.c)|
-| [free.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/free.c)|
-| [get_ops.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/get_ops.c)|
-| [linked_list.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/linked_list.c)|
-| [main_monty.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/main_monty.c)|
-| [monty.h](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/monty.h)|
-| [stacks.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/stacks.c)|
-| [str3.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/str3.c)|
-| [tokerr.c](https://github.com/edward0rtiz/monty/blob/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/tokerr.c)|
-| [bytecodes](https://github.com/edward0rtiz/monty/tree/df9ab3ad3ae6d985abefed3d2b5919577256f8b5/bytecodes)|
+## File Descriptions  
+  
+Listed below are the descriptions of the files in this repo:  
+  
+File | Description  
+--------|---------------  
+helperfuncs.c | Includes functions for string manipulation.  
+main.c| Contains parser and main monty interpreter.  
+free_list.c | Contains function to print doubly linked list    
+monty.c | Contains functions for opcodes 
+monty1.c | Contains functions for opcodes 
+monty.h | Contains function prototypes and data structures.  
+  
+  
+  
+  
+  
+  
+## Authors  
+  
+*Faizan Khan* :zap:  
+  
+  
+*Christian Williams* :musical_note:  
+  
+## Data Structures and Functions  Used
+  
+```  
+typedef struct stack_s
+
+{
+int n;
+struct stack_s *prev;
+struct stack_s *next;
+} stack_t;
+
+typedef struct instruction_s
+
+{
+char *opcode;
+void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+
+void add(stack_t **stack, unsigned int line_num);
+void swap(stack_t **stack, unsigned int line_num);
+void pop(stack_t **stack, unsigned int line_num);
+stack_t *push(stack_t **stack, unsigned int line_num, int n);
+void pall(stack_t **stack, unsigned int line_num);
+stack_t *push(stack_t **stack, unsigned int line_num, int n);
+void swap(stack_t **stack, unsigned int line_num);
+void free_dlistint(dlistint_t *head);
+int _strcmp(char *s1, char *s2);
 
 
-## Additional info :construction:
-### Resources
-
-- GLIBC 2.24
-- gcc 4.8.4
-- betty linter 0.32
-
-
-
-### Try It On Your Machine computer:	
-```bash
-git clone https://github.com/edward0rtiz/holbertonschool-low_level_programming.git
-cd monty
-gcc -Wall -Werror -Wextra -pedantic *.c -o monty
-USAGE
-cat -e bytecodes/000.m
-
-FORT TESTING WITH BYTECODES:
-cd bytecodes
-cat bytecodes/FILENAME.m
-./monty bytecodes/FILENAME.m
 ```
